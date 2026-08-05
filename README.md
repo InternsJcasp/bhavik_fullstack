@@ -12,3 +12,5 @@ Topics Covered
 - Detached HEAD
 - Reflog
 - Merge Conflicts
+
+- Made Multiple Pages and their commits specifically to learn about commits
