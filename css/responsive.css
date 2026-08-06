@@ -1,0 +1,23 @@
+@media (max-width: 992px){
+    .nav-links{
+        gap: var(--space-4);
+    }
+    .navbar-button{
+        padding: var(--space-2) var(--space-3);
+    }
+    .logo{
+        font-size: var(--fs-lg);
+    }
+}
+
+@media (max-width: 768px){
+    .nav-links{
+        display: none;
+    }
+    .navbar-btn{
+        display: none;
+    }
+    .hamburger-btn{
+        display: block;
+    }
+}
