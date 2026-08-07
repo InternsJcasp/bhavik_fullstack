@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root{
+    --primary-color: #2563EB;
+    --primary-dark: #1D4ED8;
+    --secondary-color: #F59E0B;
+
+    --white-color: #FFFFFF;
+    --header-color: #0B0F19;
+
+    --background-color: #F8FAFC;
+    --surface-color: #FFFFFF;
+
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-light: #64748B;
+    --text-premium: #E2E8F0;
+
+    --border-color: #E2E8F0;
+
+    --success-color: #22C55E;
+    --warning-color: #F59E0B;
+    --danger-color: #EF4444;
+
+    --font-family: "Inter", sans-serif;
+
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
+    --fs-2xl: 1.5rem;
+    --fs-3xl: 2rem;
+    --fs-4xl: 2.5rem;
+    --fs-5xl: 3rem;
+
+    --fw-light:300;
+    --fw-regular:400;
+    --fw-medium:500;
+    --fw-semibold:600;
+    --fw-bold:700;
+    --fw-extrabold:800;
+
+    --lh-tight:1.2;
+    --lh-normal:1.5;
+    --lh-relaxed:1.8;
+ 
+    --ls-tight:-0.5px;
+    --ls-normal:0;
+    --ls-wide:1px;
+
+    --space-1:0.25rem;
+    --space-2:0.5rem;
+    --space-3:0.75rem;
+    --space-4:1rem;
+    --space-5:1.25rem;
+    --space-6:1.5rem;
+    --space-8:2rem;
+    --space-10:2.5rem;
+    --space-12:3rem;
+    --space-16:4rem;
+    --space-20:5rem;
+    --space-24:6rem;
+    --space-32:8rem;
+
+    --radius-sm:4px;
+    --radius-md:8px;
+    --radius-lg:12px;
+    --radius-xl:16px;
+    --radius-2xl:24px;
+    --radius-full:9999px;
+
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.08);
+    --shadow-md:0 4px 12px rgba(0,0,0,0.10);
+    --shadow-lg:0 10px 25px rgba(0,0,0,0.15);
+    --shadow-xl:0 20px 40px rgba(0,0,0,0.20);
+
+    --transition-fast:0.2s ease;
+    --transition-normal:0.3s ease;
+    --transition-slow:0.5s ease;
+
+    --container-width:1280px;
+    --container-padding:20px;
+
+    --header-height: 60px;
+
+    --z-dropdown:100;
+    --z-sticky:500;
+}
