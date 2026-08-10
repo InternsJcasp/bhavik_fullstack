@@ -10,6 +10,23 @@
 // Don't sort the array.
 // Don't use nested loops.
 
+// First Version - v1
+// let arr = [1, 2, 5];
+let arr = [-2, -1, 1, 2, 3, 5, 6, 8];
+function findMissingNumber(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (!(arr[i] + 1 === arr[i + 1])) {
+      console.log(arr[i] + 1);
+    }
+  }
+}
+
+findMissingNumber(arr);
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+// Second Version - v2
 // let arr = [-2, -1, 1, 2, 3, 5, 6, 8];
 let arr = [3, 4, 1, 5];
 

@@ -19,6 +19,27 @@
 //   t: 1
 // }
 
+// First Version - v1
+let str = "javascript";
+
+function countCharacterFrequency(str) {
+  let freqCounter = {};
+  let strToArray = str.split("");
+  for (let i = 0; i < strToArray.length; i++) {
+    if (!freqCounter[strToArray[i]]) {
+      freqCounter[strToArray[i]] = 1;
+    } else {
+      freqCounter[strToArray[i]] += 1;
+    }
+  }
+  console.log(freqCounter);
+}
+countCharacterFrequency(str);
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+// Second Version - v2
 let str = "javascript";
 
 function countCharacterFrequency(str) {
