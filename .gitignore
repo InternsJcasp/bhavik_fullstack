@@ -1,0 +1,7 @@
+# Node dependencies (is se 10K+ files hat jayengi)
+node_modules/
+
+# Unwanted local folders
+learn_cloning/
+learn_css/
+learning_js/
