@@ -1,0 +1,65 @@
+[
+  {
+    "id": 101,
+    "name": "Rahul",
+    "age": 21,
+    "course": "Javascript",
+    "marks": 85
+  },
+  {
+    "id": 102,
+    "name": "Priya",
+    "age": 22,
+    "course": "Python",
+    "marks": 92
+  },
+  {
+    "id": 103,
+    "name": "Aman",
+    "age": 20,
+    "course": "React",
+    "marks": 78
+  },
+  {
+    "id": 104,
+    "name": "Sneha",
+    "age": 23,
+    "course": "Node.js",
+    "marks": 88
+  },
+  {
+    "id": 105,
+    "name": "Vikram",
+    "age": 21,
+    "course": "Java",
+    "marks": 74
+  },
+  {
+    "id": 106,
+    "name": "Ananya",
+    "age": 22,
+    "course": "C++",
+    "marks": 95
+  },
+  {
+    "id": 107,
+    "name": "Rohan",
+    "age": 20,
+    "course": "HTML & CSS",
+    "marks": 81
+  },
+  {
+    "id": 108,
+    "name": "Kavya",
+    "age": 24,
+    "course": "SQL",
+    "marks": 89
+  },
+  {
+    "id": 109,
+    "name": "Siddharth",
+    "age": 21,
+    "course": "TypeScript",
+    "marks": 90
+  }
+]
