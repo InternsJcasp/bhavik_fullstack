@@ -1,0 +1,13 @@
+{
+  "name": "studentmanagementproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "StudentManagement.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node StudentManagement.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
