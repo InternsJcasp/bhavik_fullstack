@@ -11,7 +11,7 @@
 
 // console.log(getPowerOfX(4, 5));
 
-// Optimized Solution: We are doing half power everytime and passing it to the function.
+// Optimized Solution: We are doing half power everytime and passing it to the function. Here I used LOgarithmic Approach.
 
 function getPowerOfX(number, power) {
   if (power === 0) {
