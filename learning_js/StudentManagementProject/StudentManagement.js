@@ -1,5 +1,14 @@
 import students from "./data/students.json" with { type: "json" };
 import {
+  addStudentMutably,
+  deleteStudentMutably,
+  addStudentImmutably,
+  deleteStudentImmutably,
+  readStudentData,
+  updateStudentDataMutable,
+  updateStudentDataImmutable,
+} from "./services/studentCRUD.js";
+import {
   filterByCourseAndMinimumMarks,
   filterByMarks,
   filterByMaximumMarks,
@@ -21,6 +30,8 @@ import {
   getTotalNumberOfStudents,
   getCoursewiseStats,
 } from "./services/studentStatistics.js";
+
+const studentArray = Array.from(students);
 
 // Searching:
 // Search Student by Id
@@ -86,4 +97,44 @@ import {
 // console.log(getTotalNumberOfStudents(students));
 
 // Course Wise Statistics includes: count, totalMarks, averageMarks"
-console.log(getCoursewiseStats(students));
+// console.log(getCoursewiseStats(students));
+
+// CRUD:
+
+// Add Student in Students Array.
+// const newStudent = {
+//   id: 110,
+//   name: "Vaidik",
+//   age: 25,
+//   course: "Python",
+//   marks: 52,
+// };
+
+// Add Student Mutably:
+// console.log(addStudentMutably(studentArray, newStudents));
+
+// Delete Student in Students Array Mutably:
+// console.log(deleteStudentImmutably(studentArray, 103));
+
+// Add Student Mutably:
+// console.log(addStudentImmutably(studentArray, newStudent));
+
+// Delete StudentArrays Immutably:
+// console.log(deleteStudentImmutably(studentArray, 105));
+
+// Read Student Data:
+// console.log(readStudentData(studentArray, 101));
+
+// Update Student Data:
+const updatedData = {
+  name: "Raju",
+  course: "Rust",
+  marks: 84,
+};
+
+// Mutably Update Student Data:
+// console.log(updateStudentDataMutable(studentArray, 109, updatedData));
+// console.log(studentArray);
+
+// Immutably Update Student Data:
+console.log(updateStudentDataImmutable(studentArray, 104, updatedData));
