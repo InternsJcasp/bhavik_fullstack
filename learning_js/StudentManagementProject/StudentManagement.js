@@ -1,5 +1,13 @@
 import students from "./data/students.json" with { type: "json" };
 import {
+  filterByCourseAndMinimumMarks,
+  filterByMarks,
+  filterByMaximumMarks,
+  filterByMinimumMarks,
+  filterByCourseAndMaximumMarks,
+  filterStudents,
+} from "./services/studentFilter.js";
+import {
   searchByCourse,
   searchById,
   searchByName,
@@ -25,3 +33,29 @@ import { sortByAge, sortByMarks, sortByName } from "./services/studentSort.js";
 
 // sort By Name:
 // console.log(sortByName(students));
+
+// Filtering:
+
+// filter by Exact Marks:
+// console.log(filterByMarks(students, 89));
+
+// filter by Minimum Marks:
+// console.log(filterByMinimumMarks(students, 89));
+
+// filter by Maximum Marks:
+// console.log(filterByMaximumMarks(students, 89));
+
+// filter by course and Minimum Marks:
+// console.log(filterByCourseAndMinimumMarks(students, "Javascript", 80));
+
+// filter by course and Minimum Marks:
+// console.log(filterByCourseAndMaximumMarks(students, "Javascript", 80));
+
+// filter based on given course and min-max range of Marks:
+console.log(
+  filterStudents(students, {
+    course: "Javascript",
+    minMarks: 84,
+    maxMarks: 95,
+  }),
+);
