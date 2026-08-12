@@ -13,6 +13,14 @@ import {
   searchByName,
 } from "./services/studentSearch.js";
 import { sortByAge, sortByMarks, sortByName } from "./services/studentSort.js";
+import {
+  getAverageMarks,
+  getHighestMarks,
+  getTotalMarks,
+  getLowestMarks,
+  getTotalNumberOfStudents,
+  getCoursewiseStats,
+} from "./services/studentStatistics.js";
 
 // Searching:
 // Search Student by Id
@@ -52,10 +60,30 @@ import { sortByAge, sortByMarks, sortByName } from "./services/studentSort.js";
 // console.log(filterByCourseAndMaximumMarks(students, "Javascript", 80));
 
 // filter based on given course and min-max range of Marks:
-console.log(
-  filterStudents(students, {
-    course: "Javascript",
-    minMarks: 84,
-    maxMarks: 95,
-  }),
-);
+// console.log(
+//   filterStudents(students, {
+//     course: "Javascript",
+//     minMarks: 84,
+//     maxMarks: 95,
+//   }),
+// );
+
+// Student Statistics:
+
+// Total Marks:
+// console.log(getTotalMarks(students));
+
+// Average Marks:
+// console.log(getAverageMarks(students));
+
+// Highest Marks:
+// console.log(getHighestMarks(students));
+
+// Lowest Marks:
+// console.log(getLowestMarks(students));
+
+// Total No. of Students:
+// console.log(getTotalNumberOfStudents(students));
+
+// Course Wise Statistics includes: count, totalMarks, averageMarks"
+console.log(getCoursewiseStats(students));
