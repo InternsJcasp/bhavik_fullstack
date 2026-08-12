@@ -1,11 +1,1 @@
-state.js
-→ Todo data
-
-todo.js
-→ Add/Edit/Delete/Complete logic
-
-ui.js
-→ DOM manipulation / rendering
-
-app.js
-→ Event listeners + application initialization
+// No Array No LocalStorage Simple Todo App but with proper CRUD Functionality.
