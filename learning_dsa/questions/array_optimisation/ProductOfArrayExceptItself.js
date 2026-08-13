@@ -61,38 +61,3 @@ function calculateProductV2(inputArray) {
 
 // Time Complexity: O(n)
 // Space Complexity: O(n)
-
-// Third Version - v3
-// Prefix Product + Suffix Product
-
-// Approach:
-// Calculate the product of elements on the left and right of every element.
-// Multiply left product with right product.
-// This avoids division and correctly handles 0.
-
-function calculateProductV3(inputArray) {
-  const productArray = new Array(inputArray.length).fill(1); // Stores the final product for every index.
-
-  let prefixProduct = 1; // Stores the product of elements to the left.
-
-  for (let i = 0; i < inputArray.length; i++) {
-    productArray[i] = prefixProduct; // Stores the left-side product.
-
-    prefixProduct *= inputArray[i]; // Adds current element to prefix product.
-  }
-
-  let suffixProduct = 1; // Stores the product of elements to the right.
-
-  for (let i = inputArray.length - 1; i >= 0; i--) {
-    productArray[i] *= suffixProduct; // Multiplies left product with right product.
-
-    suffixProduct *= inputArray[i]; // Adds current element to suffix product.
-  }
-
-  return productArray;
-}
-
-console.log(calculateProductV3(arr));
-
-// Time Complexity: O(n)
-// Space Complexity: O(n)
