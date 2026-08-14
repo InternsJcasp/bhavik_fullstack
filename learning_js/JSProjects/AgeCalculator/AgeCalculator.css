@@ -1,0 +1,141 @@
+:root {
+  --font-primary: Arial, sans-serif;
+
+  --color-background: #f4f4f4;
+  --color-text: #333;
+  --color-white: #fff;
+  --color-border: #ccc;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #3730a3;
+  --color-secondary: gray;
+
+  --spacing-small: 10px;
+  --spacing-medium: 15px;
+  --spacing-large: 25px;
+
+  --border-radius: 6px;
+  --card-radius: 10px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--color-background);
+    color: var(--color-text);
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    margin: 40px 0 var(--spacing-large); /* top left/right bottom */
+}
+
+.main-heading{
+    color: var(--color-text);
+    font-size: 32px;
+}
+
+main{
+    width: 500px;
+    padding: var(--spacing-large);
+    background: var(--color-white);
+    border-radius: var(--card-radius);
+}
+
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    margin-bottom: 20px;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.input-section input {
+  width: 100%;
+  padding: 12px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+
+  font-size: 16px;
+}
+
+.input-section input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.operation-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-small)
+}
+
+.operation-section button {
+  padding: 12px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.calculate-btn{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.calculate-btn:hover{
+    background: var(--color-primary-hover);
+}
+
+.clear-btn{
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.clear-btn:hover{
+    background: var(--color-primary-hover)
+}
+
+
+.result-section {
+  margin-top: 20px;
+  padding: var(--spacing-medium);
+
+  background: var(--color-background);
+  border-radius: var(--border-radius);
+
+  text-align: center;
+}
+
+.result {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* Mobile */
+@media (max-width: 500px) {
+  main {
+    width: 90%;
+  }
+
+  .operation-section {
+    grid-template-columns: 1fr;
+  }
+}
