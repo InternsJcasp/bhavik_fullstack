@@ -1,11 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="Calculator.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="main-heading">JS Calculator</h1>
+    </header>
+    <main>
+      <section class="input-section">
+        <label for="first-input">
+          <input
+            type="number"
+            placeholder="Write a Number"
+            id="first-input"
+            name="first-input"
+          />
+        </label>
+        <label for="second-input">
+          <input
+            type="number"
+            placeholder="Write a Number"
+            id="second-input"
+            name="second-input"
+          />
+        </label>
+      </section>
+      <section class="operation-section">
+        <button class="add-button">Add +</button>
+        <button class="subtract-button">Subtract -</button>
+        <button class="mutiply-button">Multiply *</button>
+        <button class="divide-button">Divide /</button>
+      </section>
+
+      <section class="result-section">
+        <p class="result"></p>
+      </section>
+    </main>
+    <script src="Calculator.js"></script>
+  </body>
 </html>
