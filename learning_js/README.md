@@ -599,3 +599,15 @@ By the end of this module, you should be able to:
 - Compare recursion with iteration.
 - Solve common recursion problems independently.
 - Analyze the Time and Space Complexity of recursive solutions.
+
+## Prompt to bring Effective Answers from AI which helps you in increasing your Learning Growth.
+
+- Act as a Senior Software Engineer and Computer Science Professor. I want to learn [Concept, e.g., Factory Pattern / Async Event Loops].
+
+- Explain the real-world problem this concept solves.
+
+- Provide clean, readable pseudo-code or Python/Java code illustrating the concept.
+
+- Break down the code line-by-line using annotations.
+
+- Ask me 2 diagnostic questions at the end to check my understanding before moving on.
