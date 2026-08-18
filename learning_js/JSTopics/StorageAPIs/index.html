@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Browser Storage Demo</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        background: #1e1e2e;
+        color: #fff;
+      }
+      .card {
+        background: #2b2b3d;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+      }
+      input {
+        padding: 8px;
+        margin-right: 8px;
+        border-radius: 4px;
+        border: none;
+      }
+      button {
+        padding: 8px 12px;
+        cursor: pointer;
+        background: #74c7ec;
+        border: none;
+        font-weight: bold;
+        border-radius: 4px;
+      }
+      pre {
+        background: #11111b;
+        padding: 10px;
+        color: #a6e3a1;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Functional Storage Architecture</h2>
+
+    <!-- Cookies -->
+    <div class="card">
+      <h3>1. Cookie (Auth Token)</h3>
+      <input id="cookieInput" placeholder="Enter Token" />
+      <button onclick="handleCookieSave()">Save Cookie</button>
+      <pre id="cookieOutput"></pre>
+    </div>
+
+    <!-- LocalStorage -->
+    <div class="card">
+      <h3>2. LocalStorage (Theme Config)</h3>
+      <input id="lsInput" placeholder="Theme Name (e.g. dark)" />
+      <button onclick="handleLSSave()">Save LocalStorage</button>
+      <pre id="lsOutput"></pre>
+    </div>
+
+    <!-- SessionStorage -->
+    <div class="card">
+      <h3>3. SessionStorage (Draft Form)</h3>
+      <input id="ssInput" placeholder="Temporary Form Text" />
+      <button onclick="handleSSSave()">Save SessionStorage</button>
+      <pre id="ssOutput"></pre>
+    </div>
+
+    <!-- IndexedDB -->
+    <div class="card">
+      <h3>4. IndexedDB (User List)</h3>
+      <input id="idbInput" placeholder="User Name" />
+      <button onclick="handleIDBSave()">Add to Database</button>
+      <pre id="idbOutput"></pre>
+    </div>
+
+    <!-- Cache API -->
+    <div class="card">
+      <h3>5. Cache Storage (API Response)</h3>
+      <button onclick="handleCacheSave()">Cache Fake API Data</button>
+      <pre id="cacheOutput"></pre>
+    </div>
+
+    <script src="AllStorageUse.js"></script>
+  </body>
+</html>

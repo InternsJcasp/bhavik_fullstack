@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Task Manager</title>
+
+    <link rel="stylesheet" href="TaskList.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>Task Manager</h1>
+
+      <!-- Add Task -->
+      <form id="taskForm" class="task-form">
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="Enter a task..."
+          required
+        />
+
+        <button type="submit">Add Task</button>
+      </form>
+
+      <!-- Task List -->
+      <section class="tasks-section">
+        <h2>My Tasks</h2>
+
+        <ul id="taskList">
+          <!-- JavaScript will add tasks here -->
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
