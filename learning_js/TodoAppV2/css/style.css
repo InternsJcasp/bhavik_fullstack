@@ -3,10 +3,199 @@
   margin: 0;
   box-sizing: border-box;
 } */
+
+.todo-container {
+  max-width: 800px;
+  margin-inline: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 90vh;
+}
+
+.header {
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.todo-form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.todo-form input {
+  padding-block: 10px;
+  padding-inline: 20px;
+  margin: 10px;
+}
+
+.buttons-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+button {
+  padding: 0.5vw;
+}
+
+.add-todo {
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow";
+  font-size: 1rem;
+  padding: 10px;
+  background-color: rgba(51, 204, 5, 0.918);
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.search-todo {
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow";
+  background-color: rgb(9, 25, 236);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.clear-completed-tasks {
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow";
+  font-size: 1rem;
+  padding: 10px;
+  background-color: rgb(247, 22, 22);
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+li {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.todo-details h2 {
+  text-align: start;
+  padding-left: 11px;
+}
+
+.individual-todo-buttons {
+  display: inline-flex;
+  margin-left: 10px;
+  gap: 10px;
+}
+
+.edit-btn {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-size: medium;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  transform: translateY(-2px);
+  transition: transform ease-in 0.2s;
+}
+
+.delete-btn {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-size: medium;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  transition: transform ease-in 0.2s;
+}
+
 .completed {
   text-decoration: line-through;
 }
 
-.edit-btn {
-  padding: 3px;
+@media (max-width: 768px) {
+  .todo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .buttons-list {
+    flex-direction: column;
+    margin: 20px;
+    gap: 10px;
+  }
+
+  button {
+    padding: 2vw;
+  }
+
+  .add-todo {
+    color: white;
+    font-family: "Franklin Gothic Medium", "Arial Narrow";
+    font-size: 1rem;
+    background-color: rgba(51, 204, 5, 0.918);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding-inline: 15px;
+  }
+
+  .search-todo {
+    color: white;
+    font-family: "Franklin Gothic Medium", "Arial Narrow";
+    font-size: 1rem;
+    background-color: rgb(9, 25, 236);
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+
+  .clear-completed-tasks {
+    color: white;
+    font-family: "Franklin Gothic Medium", "Arial Narrow";
+    font-size: 0.8rem;
+    background-color: rgb(247, 22, 22);
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+
+  .edit-btn {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: medium;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .delete-btn {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: medium;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #taskList li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .todo-details{
+    
+  }
+
+  .individual-todo-buttons {
+    flex-direction: column;
+    margin-block: 10px;
+    gap: 10px;
+  }
 }

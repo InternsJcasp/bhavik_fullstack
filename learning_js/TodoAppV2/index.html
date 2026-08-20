@@ -16,11 +16,17 @@
           name="input-box"
           placeholder="Write your todo task"
         />
-        <button>Add Todo</button>
+        <div class="buttons-list">
+          <button class="add-todo">Add Todo</button>
+          <button class="search-todo">Search Todo</button>
+          <button class="clear-completed-tasks">Clear Completed Tasks</button>
+        </div>
       </div>
-      <h2>Todo List</h2>
-      <ul id="taskList"></ul>
-      <hr />
+      <div class="todo-details">
+        <h2>Todo List</h2>
+        <ul id="taskList"></ul>
+        <hr />
+      </div>
 
       <div class="counter-container">
         <div class="task-counter">
@@ -30,6 +36,6 @@
       </div>
     </div>
 
-    <script src="./js/app.js"></script>
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>
