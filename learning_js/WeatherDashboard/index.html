@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weather Dashboard</h1>
+
+      <form id="weatherForm">
+        <input
+          id="cityInput"
+          type="text"
+          placeholder="Enter city (e.g. Ahmedabad)"
+          required
+        />
+        <button type="submit">Search</button>
+        <button id="refreshBtn" type="button">Refresh</button>
+      </form>
+
+      <div id="loading" hidden>Loading...</div>
+
+      <p id="error" class="error"></p>
+
+      <div id="weather" class="weather-card">
+        <p>Search a city to see weather.</p>
+      </div>
+
+      <h3>Recent Searches</h3>
+      <div id="recentSearches">No recent searches.</div>
+    </div>
+    <script src="Weather.js"></script>
+  </body>
+</html>
