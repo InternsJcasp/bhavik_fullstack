@@ -24,5 +24,4 @@ function stockSpan(prices) {
 }
 
 const prices = [100, 80, 60, 70, 60, 75, 85];
-
 console.log(stockSpan(prices));

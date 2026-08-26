@@ -11,7 +11,6 @@ function dailyTemperatures(temperatures) {
 
       result[previousDay] = currentDay - previousDay;
     }
-
     stack.push(currentDay);
   }
 
@@ -19,5 +18,4 @@ function dailyTemperatures(temperatures) {
 }
 
 const temperatures = [73, 74, 75, 71, 69, 72, 76, 73];
-
 console.log(dailyTemperatures(temperatures));
