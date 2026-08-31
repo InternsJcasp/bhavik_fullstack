@@ -8,6 +8,31 @@ export const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 export const PHONE_REGEX = /^\+?\d{7,15}$/;
 
 /**
+ * Validate Employee ID:
+ * - Required
+ * - Min 2 characters
+ * - Only letters, and Numbers.
+ */
+
+export const validateEmployeeID = (value) => {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return "Employee ID is required";
+  }
+  if (trimmed.length < 2) {
+    return "EmployeeID must be of at least 2 characters";
+  }
+
+  // Regex Pattern to check if the EmployeeID only consists of Letters and Numbers.
+  const employeeidRegex = /^[a-zA-Z0-9]+$/;
+  if (!employeeidRegex.test(trimmed)) {
+    return "Employee ID can only contain letters, Numbers";
+  }
+
+  return "";
+};
+
+/**
  * Validate full name:
  * - Required
  * - Min 2 characters
@@ -69,6 +94,20 @@ export const validatePassword = (value) => {
   return "";
 };
 
+export const validateDOB = (value) => {
+  if (!value) {
+    return "Date of Birth is Required";
+  }
+  const dateValue = new Date(value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  dateValue.setHours(0, 0, 0, 0);
+  if (!(dateValue < today)) {
+    return "Date of Birth cannot be more than Today";
+  }
+  return "";
+};
+
 /**
  * Validate department:
  * - Required
@@ -85,6 +124,24 @@ export const validateDepartment = (value) => {
     return "Please select a valid department";
   }
 
+  return "";
+};
+
+const ALLOWED_DESIGNATION = [
+  "manager",
+  "intern",
+  "teamlead",
+  "associate",
+  "senior-employee",
+];
+
+export const validateDesignation = (value) => {
+  if (!value) {
+    return "Designation is Required";
+  }
+  if (!ALLOWED_DESIGNATION) {
+    return "Please Select a valid Designation";
+  }
   return "";
 };
 
@@ -105,6 +162,18 @@ export const validateJoiningDate = (value) => {
     return "Enter a valid joining date";
   }
 
+  return "";
+};
+
+// Validate Salary
+export const validateSalary = (value) => {
+  if (value < 0) {
+    return "Salary cannot be a Negative Value.";
+  }
+  const salaryRegex = /^\$?\d+(\.\d{1,2})?$/;
+  if (!salaryRegex.test(value)) {
+    return "Salary can only be a Number";
+  }
   return "";
 };
 

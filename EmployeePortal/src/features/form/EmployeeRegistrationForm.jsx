@@ -6,6 +6,10 @@ import {
   validateDepartment,
   validateJoiningDate,
   validatePhone,
+  validateEmployeeID,
+  validateDOB,
+  validateDesignation,
+  validateSalary,
 } from "../../utils/validation";
 
 import InputField from "../../components/forms/InputField";
@@ -16,28 +20,40 @@ import ResetButton from "../../components/forms/ResetButton";
 import { AppLayout } from "../../app/layout/AppLayout";
 
 const initialFormState = {
+  employeeId: "",
   fullName: "",
   email: "",
   password: "",
+  dob: "",
   department: "",
+  designation: "",
+  salary: "",
   joiningDate: "",
   phone: "",
 };
 
 const initialErrorsState = {
+  employeeId: "",
   fullName: "",
   email: "",
   password: "",
+  dob: "",
   department: "",
+  designation: "",
+  salary: "",
   joiningDate: "",
   phone: "",
 };
 
 const initialTouchedState = {
+  employeeId: false,
   fullName: false,
   email: false,
   password: false,
+  dob: false,
   department: false,
+  designation: false,
+  salary: false,
   joiningDate: false,
   phone: false,
 };
@@ -48,6 +64,14 @@ const departmentOptions = [
   { value: "design", label: "Design" },
   { value: "hr", label: "HR" },
   { value: "sales", label: "Sales" },
+];
+
+const designationOptions = [
+  { value: "manager", label: "Manager" },
+  { value: "intern", label: "Intern" },
+  { value: "teamlead", label: "Team Lead" },
+  { value: "associate", label: "Associate Developer" },
+  { value: "senior-employee", label: "Senior Employee" },
 ];
 
 export default function EmployeeRegistrationForm() {
@@ -67,6 +91,9 @@ export default function EmployeeRegistrationForm() {
       let errorMessage = "";
 
       switch (fieldName) {
+        case "employeeId":
+          errorMessage = validateEmployeeID(value);
+          break;
         case "fullName":
           errorMessage = validateFullName(value);
           break;
@@ -76,8 +103,17 @@ export default function EmployeeRegistrationForm() {
         case "password":
           errorMessage = validatePassword(value);
           break;
+        case "dob":
+          errorMessage = validateDOB(value);
+          break;
         case "department":
           errorMessage = validateDepartment(value);
+          break;
+        case "designation":
+          errorMessage = validateDesignation(value);
+          break;
+        case "salary":
+          errorMessage = validateSalary(value);
           break;
         case "joiningDate":
           errorMessage = validateJoiningDate(value);
@@ -108,6 +144,9 @@ export default function EmployeeRegistrationForm() {
     let errorMessage = "";
 
     switch (fieldName) {
+      case "employeeId":
+        errorMessage = validateEmployeeID(value);
+        break;
       case "fullName":
         errorMessage = validateFullName(value);
         break;
@@ -117,8 +156,17 @@ export default function EmployeeRegistrationForm() {
       case "password":
         errorMessage = validatePassword(value);
         break;
+      case "dob":
+        errorMessage = validateDOB(value);
+        break;
       case "department":
         errorMessage = validateDepartment(value);
+        break;
+      case "designation":
+        errorMessage = validateDesignation(value);
+        break;
+      case "salary":
+        errorMessage = validateSalary(value);
         break;
       case "joiningDate":
         errorMessage = validateJoiningDate(value);
@@ -142,10 +190,14 @@ export default function EmployeeRegistrationForm() {
 
     // 1) Mark all fields as touched
     const allTouched = {
+      employeeId: true,
       fullName: true,
       email: true,
       password: true,
+      dob: true,
       department: true,
+      designation: true,
+      salary: true,
       joiningDate: true,
       phone: true,
     };
@@ -153,10 +205,14 @@ export default function EmployeeRegistrationForm() {
 
     // 2) Validate all fields
     const newErrors = {
+      employeeId: validateEmployeeID(formData.employeeId),
       fullName: validateFullName(formData.fullName),
       email: validateEmail(formData.email),
       password: validatePassword(formData.password),
+      dob: validateDOB(formData.dob),
       department: validateDepartment(formData.department),
+      designation: validateDesignation(formData.designation),
+      salary: validateSalary(formData.salary),
       joiningDate: validateJoiningDate(formData.joiningDate),
       phone: validatePhone(formData.phone),
     };
@@ -190,6 +246,20 @@ export default function EmployeeRegistrationForm() {
           onSubmit={handleSubmit}
           className="space-y-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm"
         >
+          {/* Employee Id */}
+          <InputField
+            id="employeeId"
+            name="employeeId"
+            label="Employee ID"
+            type="text"
+            value={formData.employeeId}
+            onChange={(value) => handleFieldChange("employeeId", value)}
+            onBlur={() => handleFieldBlur("employeeId")}
+            error={errors.employeeId}
+            placeholder="e.g. abc123"
+            required
+          />
+
           {/* Full Name */}
           <InputField
             id="fullName"
@@ -231,6 +301,19 @@ export default function EmployeeRegistrationForm() {
             required
           />
 
+          {/* Date of Birth */}
+          <InputField
+            id="dob"
+            name="dob"
+            label="Date of Birth"
+            type="date"
+            value={formData.dob}
+            onChange={(value) => handleFieldChange("dob", value)}
+            onBlur={() => handleFieldBlur("dob")}
+            error={errors.dob}
+            required
+          />
+
           {/* Department */}
           <SelectField
             id="department"
@@ -242,6 +325,33 @@ export default function EmployeeRegistrationForm() {
             error={errors.department}
             options={departmentOptions}
             placeholder="Select department"
+            required
+          />
+
+          {/* Designation */}
+          <SelectField
+            id="designation"
+            name="designation"
+            label="Designation"
+            value={formData.designation}
+            onChange={(value) => handleFieldChange("designation", value)}
+            onBlur={() => handleFieldBlur("designation")}
+            error={errors.designation}
+            options={designationOptions}
+            placeholder="Select designation"
+            required
+          />
+
+          {/* Salary */}
+          <InputField
+            id="salary"
+            name="salary"
+            label="Salary"
+            type="text"
+            value={formData.salary}
+            onChange={(value) => handleFieldChange("salary", value)}
+            onBlur={() => handleFieldBlur("salary")}
+            error={errors.salary}
             required
           />
 

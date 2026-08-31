@@ -20,7 +20,7 @@ export default function SubmitButton({
       className={`rounded bg-black px-4 py-2 text-white ${
         disabled || loading
           ? "cursor-not-allowed bg-gray-300"
-          : "bg-black hover:bg-gray-200"
+          : "bg-black hover:bg-black/80"
       }`}
     >
       {loading ? "Submitting..." : label}
