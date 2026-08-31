@@ -1,4 +1,5 @@
 import { Sun } from "lucide-react";
+
 export function Header() {
   return (
     <header className="bg-black/90 text-white px-4 py-3 sm:px-6 md:px-8 sticky top-0 border-b dark:border-slate-700">
@@ -24,12 +25,24 @@ export function Header() {
             </li>
           </ul>
         </nav>
-        <a
-          href="/profile"
-          className="shrink p-1 w-7 h- sm:w-8 sm:h-8 rounded-full border-2 border-slate-400 hover:border-slate-200 overflow-hidden"
-        >
-          <Sun className="text-slate-500 size-4 sm:size-5" />
-        </a>
+
+        <div className="flex items-center gap-3">
+          {/* Register button – visible on all screen sizes */}
+          <a
+            href="/register"
+            className="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 sm:px-4 sm:py-2 sm:text-base"
+          >
+            Register
+          </a>
+
+          {/* Profile icon – same as before */}
+          <a
+            href="/profile"
+            className="shrink p-1 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-slate-400 hover:border-slate-200 overflow-hidden"
+          >
+            <Sun className="text-slate-500 size-4 sm:size-5" />
+          </a>
+        </div>
       </div>
     </header>
   );
