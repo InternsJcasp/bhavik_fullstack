@@ -7,6 +7,18 @@ const MOCK_USERS = [
     email: "bhavik123@gmail.com",
     password: "bhavik123@",
   },
+  {
+    id: "2",
+    name: "Rahul",
+    email: "rahul123@gmail.com",
+    password: "rahul123@",
+  },
+  {
+    id: "3",
+    name: "Pritam",
+    email: "pritam123@gmail.com",
+    password: "pritam123@",
+  },
 ];
 
 export const authService = {
