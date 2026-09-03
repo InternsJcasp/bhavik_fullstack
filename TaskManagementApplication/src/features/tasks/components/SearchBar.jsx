@@ -1,4 +1,3 @@
-// features/tasks/components/SearchBar.jsx
 export default function SearchBar({ value, onChange }) {
   return (
     <div className="flex-1">

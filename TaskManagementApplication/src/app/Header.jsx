@@ -1,10 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "./providers";
 import { useAuth } from "../features/auth/hooks/useAuth";
 import ThemeToggle from "../components/ThemeToggle";
 
 export default function Header() {
+  const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
 
   return (
     <header className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
@@ -21,10 +28,7 @@ export default function Header() {
           )}
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           {user && (
-            <button
-              onClick={logout}
-              className="text-sm text-gray-700 dark:text-gray-200 hover:underline"
-            >
+            <button onClick={handleLogout} className="text-sm hover:underline">
               Logout
             </button>
           )}

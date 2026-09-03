@@ -1,11 +1,10 @@
-// components/ThemeToggle.jsx
 import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle({ theme, onToggle }) {
   return (
     <button
       onClick={onToggle}
-      className="p-2 rounded border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+      className="p-2 border border-gray-300 rounded-full dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

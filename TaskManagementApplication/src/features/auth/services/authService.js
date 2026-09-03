@@ -28,12 +28,9 @@ export const authService = {
         u.email.toLowerCase() === email.toLowerCase() &&
         u.password === password,
     );
-
     if (!user) {
-      throw new Error("Invalid Email or Password");
+      throw new Error("Invalid email or password");
     }
-
-    // Mock Token Save
     localStorage.setItem(storageKeys.AUTH_TOKEN, "fake-jwt-token");
     localStorage.setItem(storageKeys.AUTH_USER, JSON.stringify(user));
     return user;

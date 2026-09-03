@@ -1,4 +1,3 @@
-// features/tasks/components/TaskCard.jsx
 import { taskConstants } from "../constants/taskConstants";
 
 const statusColors = {
@@ -10,7 +9,7 @@ const statusColors = {
     "bg-green-200 text-green-800 dark:bg-green-700 dark:text-green-100",
 };
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, onEdit, onDelete }) {
   return (
     <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
       <div className="flex items-center justify-between mb-2">
@@ -28,10 +27,25 @@ export default function TaskCard({ task }) {
       </div>
 
       {task.description && (
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
           {task.description}
         </p>
       )}
+
+      <div className="flex gap-2">
+        <button
+          onClick={onEdit}
+          className="text-sm text-blue-700 dark:text-blue-400 hover:underline"
+        >
+          Edit
+        </button>
+        <button
+          onClick={onDelete}
+          className="text-sm text-red-700 dark:text-red-400 hover:underline"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

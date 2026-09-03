@@ -1,24 +1,25 @@
-import { useState, useEffect } from "react";
-import { authService } from "../services/authService";
+import { useState, useEffect } from 'react';
+import { authService } from '../services/authService';
 
 export function useAuth() {
-  const [user, setUser] = useState(() => authService.getCurrentUser());
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // First time Load hone par user check
-    setUser(authService.getCurrentUser());
+    const storedUser = authService.getCurrentUser();
+    setUser(storedUser);
     setLoading(false);
   }, []);
 
-  const login = async (email, password) => {
+  const login = (email, password) => {
     const user = authService.login(email, password);
     setUser(user);
-    return user;
   };
+
   const logout = () => {
     authService.logout();
     setUser(null);
   };
+
   return { user, loading, login, logout };
 }

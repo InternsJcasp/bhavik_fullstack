@@ -25,7 +25,6 @@ export function useTasks() {
     }
   }, [user]);
 
-  // Refresh function
   const refresh = () => {
     if (!user) return;
     setLoading(true);
@@ -40,5 +39,25 @@ export function useTasks() {
     }
   };
 
-  return { tasks, loading, error, refresh };
+  const createTask = async (taskData) => {
+    if (!user) throw new Error("No user logged in");
+    const newTask = taskService.createTask({ ...taskData, userId: user.id });
+    setTasks((prev) => [...prev, newTask]); // immediate UI update
+    return newTask;
+  };
+
+  const updateTask = async (id, changes) => {
+    if (!user) throw new Error("No user logged in");
+    const updated = taskService.updateTask(id, changes, user.id);
+    setTasks((prev) => prev.map((t) => (t.id === id ? updated : t)));
+    return updated;
+  };
+
+  const deleteTask = async (id) => {
+    if (!user) throw new Error("No user logged in");
+    taskService.deleteTask(id, user.id);
+    setTasks((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  return { tasks, loading, error, refresh, createTask, updateTask, deleteTask };
 }

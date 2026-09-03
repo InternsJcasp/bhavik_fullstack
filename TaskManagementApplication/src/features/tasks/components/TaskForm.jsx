@@ -1,82 +1,94 @@
-// features/tasks/components/TaskForm.jsx
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../../auth/hooks/useAuth";
-import { taskService } from "../services/taskService";
+import { useTasks } from "../hooks/useTasks";
 import { taskConstants } from "../constants/taskConstants";
-import { Input } from "../../../components/Input";
-import { Button } from "../../../components/Button";
+import { useForm } from "../../../hooks/useForm";
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
 
 export default function TaskForm({ taskToEdit, onSuccess, onCancel }) {
   const { user } = useAuth();
+  const { createTask, updateTask } = useTasks();
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = useState(taskConstants.TODO);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const validate = (values) => {
+    const errors = {};
+    if (!values.title?.trim()) errors.title = "Title is required";
+    return errors;
+  };
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    reset,
+    setValues,
+  } = useForm({
+    initialValues: { title: "", description: "", status: taskConstants.TODO },
+    validate,
+  });
 
   useEffect(() => {
     if (taskToEdit) {
-      setTitle(taskToEdit.title || "");
-      setDescription(taskToEdit.description || "");
-      setStatus(taskToEdit.status || taskConstants.TODO);
+      setValues({
+        title: taskToEdit.title || "",
+        description: taskToEdit.description || "",
+        status: taskToEdit.status || taskConstants.TODO,
+      });
+    } else {
+      reset();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [taskToEdit]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    if (!title.trim()) {
-      setError("Title is required");
-      return;
-    }
-
-    setLoading(true);
+  const onSubmit = async (vals) => {
     try {
       if (taskToEdit) {
-        await taskService.updateTask(
-          taskToEdit.id,
-          { title, description, status },
-          user.id,
-        );
+        await updateTask(taskToEdit.id, {
+          title: vals.title,
+          description: vals.description,
+          status: vals.status,
+        });
       } else {
-        await taskService.createTask({
-          title,
-          description,
-          status,
-          userId: user.id,
+        await createTask({
+          title: vals.title,
+          description: vals.description,
+          status: vals.status,
         });
       }
       onSuccess?.();
     } catch (err) {
-      setError(err.message || "Failed to save task");
-    } finally {
-      setLoading(false);
+      alert(err.message || "Failed to save task");
     }
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
     >
       <h2 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
         {taskToEdit ? "Edit Task" : "Create Task"}
       </h2>
 
-      {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
-
       <div className="space-y-3">
         <Input
           label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          name="title"
+          value={values.title}
+          onChange={handleChange}
+          onBlur={handleBlur}
           placeholder="Task title"
+          error={touched.title && errors.title}
         />
         <Input
           label="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          name="description"
+          value={values.description}
+          onChange={handleChange}
+          onBlur={handleBlur}
           placeholder="Task description"
         />
         <div>
@@ -84,9 +96,10 @@ export default function TaskForm({ taskToEdit, onSuccess, onCancel }) {
             Status
           </label>
           <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-2 py-1.5"
+            name="status"
+            value={values.status}
+            onChange={handleChange}
+            className="w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-2 py-1.5 text-sm"
           >
             <option value={taskConstants.TODO}>TODO</option>
             <option value={taskConstants.IN_PROGRESS}>IN_PROGRESS</option>
@@ -96,9 +109,7 @@ export default function TaskForm({ taskToEdit, onSuccess, onCancel }) {
       </div>
 
       <div className="flex gap-2 mt-4">
-        <Button type="submit" disabled={loading}>
-          {loading ? "Saving..." : taskToEdit ? "Update" : "Create"}
-        </Button>
+        <Button type="submit">{taskToEdit ? "Update" : "Create"}</Button>
         {onCancel && (
           <Button type="button" onClick={onCancel} variant="secondary">
             Cancel
