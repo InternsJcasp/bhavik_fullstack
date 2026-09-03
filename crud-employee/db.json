@@ -1,10 +1,22 @@
 {
   "employees": [
     {
-      "name": "bhavik sharma ",
-      "email": "bhavik@gmail.com",
-      "phone": "9898907878",
+      "name": "Rahul Singh",
+      "email": "rahul@gmail.com",
+      "phone": "9898907879",
       "id": "m2vS3FXyaio"
+    },
+    {
+      "name": "Rajveer Singh",
+      "email": "rajveer123@gmail.com",
+      "phone": "7778787689",
+      "id": "7eet3fr_PA8"
+    },
+    {
+      "name": "Virat kohli",
+      "email": "virat123@gmail.com",
+      "phone": "9089078786",
+      "id": "bYYcqyyanho"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
