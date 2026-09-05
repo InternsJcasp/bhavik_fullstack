@@ -10,28 +10,25 @@ export const useLogin = () => {
   const navigate = useNavigate();
 
   const handleLogin = (email, password) => {
-    // clear Previous Errors
     setIsLoading(true);
     setError(null);
 
     try {
-      // service call karo:
       const result = loginUser(email, password);
 
       if (!result.success) {
         setError(result.message);
-        setIsLoading(false);
         return;
       }
 
       login(result.user);
-      alert("Logged in Successfully.");
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     } catch {
       setError("Something went wrong");
     } finally {
       setIsLoading(false);
     }
   };
+
   return { login: handleLogin, isLoading, error };
 };

@@ -1,7 +1,24 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { useTasks } from "../../tasks/hooks/useTasks";
+import { getTaskCounts } from "../../tasks/utils/taskHelpers";
 
 export const Dashboard = () => {
   const { user } = useAuth();
+
+  const { tasks, isLoading } = useTasks();
+
+  const { totalTasks, completedTasks, remainingTasks } = getTaskCounts(tasks);
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[calc(100vh-64px)] items-center justify-center bg-gray-50">
+        <p className="text-sm font-medium text-gray-600">
+          Loading dashboard...
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[calc(100vh-64px)] bg-gray-50">
@@ -14,14 +31,27 @@ export const Dashboard = () => {
           </h1>
 
           <p className="mt-3 max-w-2xl text-gray-600">
-            Manage your work, stay focused, and keep your daily tasks organized
-            from one place.
+            Manage your work, track progress, and stay focused on the tasks that
+            matter most.
           </p>
+
+          <Link
+            to="/tasks"
+            className="mt-6 inline-flex rounded-lg bg-black px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+          >
+            Manage tasks
+          </Link>
         </section>
 
         <section className="mt-8">
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-xl font-bold text-black">Task overview</h2>
+            <div>
+              <h2 className="text-xl font-bold text-black">Task overview</h2>
+
+              <p className="mt-1 text-sm text-gray-600">
+                A quick summary of your current work.
+              </p>
+            </div>
 
             <span className="w-fit rounded-full border border-gray-300 bg-white px-3 py-1 text-sm text-gray-600">
               {user?.email}
@@ -31,41 +61,65 @@ export const Dashboard = () => {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             <article className="rounded-xl border border-gray-200 bg-white p-6">
               <p className="text-sm font-medium text-gray-500">Total tasks</p>
-              <p className="mt-2 text-4xl font-bold text-black">0</p>
-              <p className="mt-2 text-sm text-gray-500">
-                Tasks you have created
-              </p>
-            </article>
 
-            <article className="rounded-xl border border-gray-200 bg-white p-6">
-              <p className="text-sm font-medium text-gray-500">In progress</p>
-              <p className="mt-2 text-4xl font-bold text-black">0</p>
+              <p className="mt-2 text-4xl font-bold text-black">{totalTasks}</p>
+
               <p className="mt-2 text-sm text-gray-500">
-                Tasks you are currently working on
+                All tasks you have created
               </p>
             </article>
 
             <article className="rounded-xl border border-gray-200 bg-white p-6">
               <p className="text-sm font-medium text-gray-500">Completed</p>
-              <p className="mt-2 text-4xl font-bold text-black">0</p>
+
+              <p className="mt-2 text-4xl font-bold text-black">
+                {completedTasks}
+              </p>
+
               <p className="mt-2 text-sm text-gray-500">
-                Tasks you have completed
+                Tasks marked as completed
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-gray-200 bg-white p-6">
+              <p className="text-sm font-medium text-gray-500">Remaining</p>
+
+              <p className="mt-2 text-4xl font-bold text-black">
+                {remainingTasks}
+              </p>
+
+              <p className="mt-2 text-sm text-gray-500">
+                Tasks still left to complete
               </p>
             </article>
           </div>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center">
-          <h2 className="text-xl font-bold text-black">No tasks yet</h2>
+        <section className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-xl font-bold text-black">
+                {totalTasks === 0
+                  ? "Start with your first task"
+                  : "Keep your momentum going"}
+              </h2>
 
-          <p className="mt-2 text-gray-600">Tasks will be here</p>
+              <p className="mt-2 text-gray-600">
+                {totalTasks === 0
+                  ? "Create a task to begin organizing your work."
+                  : `${remainingTasks} ${
+                      remainingTasks === 1 ? "task is" : "tasks are"
+                    } remaining in your workspace.`}
+              </p>
+            </div>
 
-          <button
-            type="button"
-            className="mt-6 rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
-          >
-            Create your first task
-          </button>
+            <Link
+              to="/tasks"
+              className="w-fit rounded-lg border border-black bg-white px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-gray-100"
+            >
+              {totalTasks === 0 ? "Create task" : "View tasks"}
+            </Link>
+          </div>
         </section>
       </main>
     </div>

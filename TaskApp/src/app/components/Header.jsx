@@ -1,5 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../features/auth/hooks/useAuth";
+
+const navLinkClass = ({ isActive }) => {
+  return `hidden rounded-lg px-3 py-2 text-sm font-medium transition-colors sm:block ${
+    isActive
+      ? "bg-black text-white"
+      : "text-gray-700 hover:bg-gray-100 hover:text-black"
+  }`;
+};
 
 export const Header = () => {
   const { user, logout } = useAuth();
@@ -7,7 +15,7 @@ export const Header = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -26,20 +34,21 @@ export const Header = () => {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-3">
+        <nav className="flex items-center gap-2">
           {user ? (
             <>
-              <span className="hidden text-sm text-gray-600 sm:block">
+              <span className="hidden px-2 text-sm text-gray-600 lg:block">
                 Hi,{" "}
                 <span className="font-semibold text-black">{user.name}</span>
               </span>
 
-              <Link
-                to="/dashboard"
-                className="hidden rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-black sm:block"
-              >
+              <NavLink to="/dashboard" className={navLinkClass}>
                 Dashboard
-              </Link>
+              </NavLink>
+
+              <NavLink to="/tasks" className={navLinkClass}>
+                Tasks
+              </NavLink>
 
               <button
                 type="button"
@@ -53,7 +62,7 @@ export const Header = () => {
             <>
               <Link
                 to="/login"
-                className="rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-black"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-black"
               >
                 Login
               </Link>

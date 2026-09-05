@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import { Layout } from "./app/Layout/AppLayout";
 import { HomePage } from "./app/components/HomePage";
 
@@ -7,6 +6,8 @@ import { AuthGuard } from "./features/auth/components/AuthGuard";
 import { Dashboard } from "./features/auth/components/Dashboard";
 import { LoginForm } from "./features/auth/components/LoginForm";
 import { RegisterForm } from "./features/auth/components/RegisterForm";
+
+import { TasksPage } from "./features/tasks/components/TasksPage";
 
 function App() {
   return (
@@ -24,6 +25,15 @@ function App() {
             element={
               <AuthGuard>
                 <Dashboard />
+              </AuthGuard>
+            }
+          />
+
+          <Route
+            path="tasks"
+            element={
+              <AuthGuard>
+                <TasksPage />
               </AuthGuard>
             }
           />

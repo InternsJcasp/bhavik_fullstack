@@ -1,6 +1,3 @@
-// Form + Services ke beech ka Layer: useRegister
-// Form component ko simple interface dena: “bas submit handler do, baaki main handle kar lunga”.
-
 import { useState } from "react";
 import { validateRegisterForm } from "../../../shared/utils/validators";
 import { registerUser } from "../services/authService";
@@ -16,38 +13,33 @@ export const useRegister = () => {
   const { login } = useAuth();
 
   const register = (values) => {
-    // Clear Previous Errors
     setFieldErrors({});
     setError(null);
 
-    // Validate Errors
     const errors = validateRegisterForm(values);
+
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       return;
     }
 
-    // Start Loading
     setIsLoading(true);
 
-    // call service.
     try {
-      // store details in result
       const result = registerUser({
         name: values.name,
         email: values.email,
         password: values.password,
       });
+
       if (!result.success) {
         setError(result.message);
-        setIsLoading(false);
         return;
       }
 
-      // succes: login + redirect:
-      login(result.user.email, result.user.password);
+      login(result.user);
       alert("Successfully registered");
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     } catch {
       setError("Something went wrong");
     } finally {
