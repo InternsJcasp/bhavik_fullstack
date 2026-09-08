@@ -1,12 +1,6 @@
 {
   "employees": [
     {
-      "name": "Rahul Singh",
-      "email": "rahul@gmail.com",
-      "phone": "9898907879",
-      "id": "m2vS3FXyaio"
-    },
-    {
       "name": "Rajveer Singh",
       "email": "rajveer123@gmail.com",
       "phone": "7778787689",

@@ -37,7 +37,8 @@ export const Dashboard = () => {
 
           <Link
             to="/tasks"
-            className="mt-6 inline-flex rounded-lg bg-black px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+            className="mt-6 inline-flex rounded-lg bg-black px-5 py-3 text-sm font-semibold text-white 
+            transition-colors hover:bg-gray-800"
           >
             Manage tasks
           </Link>
@@ -117,7 +118,7 @@ export const Dashboard = () => {
               to="/tasks"
               className="w-fit rounded-lg border border-black bg-white px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-gray-100"
             >
-              {totalTasks === 0 ? "Create task" : "View tasks"}
+              {totalTasks === 0 ? "Create Task" : "View Tasks"}
             </Link>
           </div>
         </section>
